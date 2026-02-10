@@ -6,7 +6,6 @@ import {
   InspectorOptions,
   createInspector as inspectCreator,
 } from './createInspector';
-import { isNode } from './utils';
 
 // Not the most elegant way to do this, but it makes it much easier to test local changes
 const isDevMode = false;
@@ -15,6 +14,7 @@ export function createSkyInspector(
   options: {
     apiKey?: string; // Not used yet, will be used to add additional features later
     onerror?: (error: Error) => void;
+    isNode? boolean = false;
   } & InspectorOptions = {}
 ): ReturnType<typeof inspectCreator> {
   const { host, apiBaseURL } = {
